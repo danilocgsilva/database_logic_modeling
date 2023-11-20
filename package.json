@@ -1,0 +1,31 @@
+{
+  "name": "database_logical_modeling",
+  "version": "1.0.0",
+  "description": "",
+  "main": "js/index.js",
+  "scripts": {
+    "serve": "node_modules/http-server/bin/http-server -o /html",
+    "build": "node_modules/webpack/bin/webpack.js",
+    "watch": "node_modules/webpack/bin/webpack.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/danilocgsilva/database_logic_modeling.git"
+  },
+  "keywords": [
+    "database",
+    "logical",
+    "modeling"
+  ],
+  "author": "Danilo Silva <contact@danilocgsilva.me>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danilocgsilva/database_logic_modeling/issues"
+  },
+  "homepage": "https://github.com/danilocgsilva/database_logic_modeling#readme",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
