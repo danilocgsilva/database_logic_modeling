@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Draggable Rectangle</title>
+  <style>
+    canvas {
+      border: 1px solid #000;
+      cursor: grab;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="myCanvas" width="400" height="400"></canvas>
+
+<script>
+  // Get the canvas element and its context
+  const canvas = document.getElementById('myCanvas');
+  const ctx = canvas.getContext('2d');
+
+  // Define the rectangle properties
+  const rect = {
+    x: 50,
+    y: 50,
+    width: 100,
+    height: 80,
+    color: '#3498db',
+    isDragging: false,
+    offsetX: 0,
+    offsetY: 0,
+  };
+
+  // Function to draw the rectangle
+  function drawRectangle() {
+    ctx.fillStyle = rect.color;
+    ctx.fillRect(rect.x, rect.y, rect.width, rect.height);
+  }
+
+  // Function to check if the mouse coordinates are inside the rectangle
+  function isMouseInside(x, y) {
+    return x >= rect.x && x <= rect.x + rect.width && y >= rect.y && y <= rect.y + rect.height;
+  }
+
+  // Function to handle mouse down event
+  function handleMouseDown(event) {
+    const mouseX = event.clientX - canvas.getBoundingClientRect().left;
+    const mouseY = event.clientY - canvas.getBoundingClientRect().top;
+
+    if (isMouseInside(mouseX, mouseY)) {
+      rect.isDragging = true;
+      rect.offsetX = mouseX - rect.x;
+      rect.offsetY = mouseY - rect.y;
+      canvas.style.cursor = 'grabbing';
+    }
+  }
+
+  // Function to handle mouse move event
+  function handleMouseMove(event) {
+    if (rect.isDragging) {
+      const mouseX = event.clientX - canvas.getBoundingClientRect().left;
+      const mouseY = event.clientY - canvas.getBoundingClientRect().top;
+
+      rect.x = mouseX - rect.offsetX;
+      rect.y = mouseY - rect.offsetY;
+
+      // Clear the canvas and redraw the rectangle in the new position
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawRectangle();
+    }
+  }
+
+  // Function to handle mouse up event
+  function handleMouseUp() {
+    rect.isDragging = false;
+    canvas.style.cursor = 'grab';
+  }
+
+  // Add event listeners
+  canvas.addEventListener('mousedown', handleMouseDown);
+  canvas.addEventListener('mousemove', handleMouseMove);
+  canvas.addEventListener('mouseup', handleMouseUp);
+
+  // Draw the initial rectangle
+  drawRectangle();
+</script>
+
+</body>
+</html>

@@ -1,2 +1,3 @@
 node_modules
 html/dist/index.js
+package-lock.json
