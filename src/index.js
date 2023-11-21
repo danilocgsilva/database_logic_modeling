@@ -1,4 +1,4 @@
-const Rectangle = require("./Rectangle.js");
+import { Rectangle } from "./Rectangle.js";
 
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");

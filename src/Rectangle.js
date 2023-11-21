@@ -1,4 +1,4 @@
-class Rectangle {
+export class Rectangle {
     constructor(x, y, height, width, color, ctx) {
         this.x = x
         this.y = y
@@ -29,5 +29,3 @@ class Rectangle {
         this.x -= 10
     }
 }
-
-module.exports = Rectangle
