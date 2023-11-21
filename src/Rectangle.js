@@ -1,83 +1,32 @@
 class Rectangle {
-
-    constructor() {
-        this.params = {
-            x: 50,
-            y: 150,
-            width: 100,
-            height: 50
-        }
-        this.draw()
-
-    }
-
-    moveUp() {
-        this.ctx2.clearRect(
-            this.params.x,
-            this.params.y,
-            this.canvas.width, 
-            this.canvas.height
-        )
-
-        this.params.y -= 10
-
-        this.draw()
-    }
-
-    moveDown() {
-        this.ctx2.clearRect(
-            this.params.x,
-            this.params.y,
-            this.canvas.width, 
-            this.canvas.height
-        )
-
-        this.params.y += 10
-
-        this.draw()
-    }
-
-    moveLeft() {
-        console.log("foi")
-
-        this.ctx2.clearRect(
-            this.params.x,
-            this.params.y,
-            this.canvas.width, 
-            this.canvas.height
-        )
-
-        this.params.x += 10
-
-        this.draw() 
-    }
-
-    moveRight() {
-        console.log("foi")
-
-        this.ctx2.clearRect(
-            this.params.x,
-            this.params.y,
-            this.canvas.width, 
-            this.canvas.height
-        )
-
-        this.params.x -= 10
-
-        this.draw() 
+    constructor(x, y, height, width, color, ctx) {
+        this.x = x
+        this.y = y
+        this.height = height
+        this.width = width
+        this.color = color
+        this.ctx = ctx
     }
 
     draw() {
-        this.canvas = document.getElementById("myCanvas")
-        this.ctx2 = this.canvas.getContext("2d")
-        
-        this.ctx2.fillStyle = "#0000FF"
-        this.ctx2.fillRect(
-            this.params.x,
-            this.params.y,
-            this.params.width,
-            this.params.height
-        )
+        this.ctx.fillStyle = this.color;
+        this.ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
+
+    moveUp() {
+        this.y -= 10
+    }
+
+    moveDown() {
+        this.y += 10
+    }
+
+    moveLeft() {
+        this.x += 10
+    }
+
+    moveRight() {
+        this.x -= 10
     }
 }
 
